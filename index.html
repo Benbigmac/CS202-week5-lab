@@ -2,10 +2,154 @@
 <html>
 <head>
 <title>IT 202 LAB 5</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+    </style>
 </head>
-<body>
+<body><div style="background-color:GREY;padding:15px">
+    <form ><!--make, color, plate and state -->
+      <h1>So you got towed aye? Let's see if it can be found!</h1>
+    <span>Make: <select id="make" name='make' >
+      <option title=' ' value=' '> </option>
+	<option title='General Motor Comapny' value='GMC'>General Motor Comapny</option>
+	<option title='ACURA' value='ACUR'>ACURA</option>
+	<option title='AUDI' value='AUDI'>AUDI</option>
+	<option title='BMW' value='BMW'>BMW</option>
+	<option title='BUIC' value='BUIC'>BUIC</option>
+	<option title='CHEVY' value='CHEV'>CHEVY</option>
+	<option title='DODGE' value='DODGE'>DODGE</option>
+	<option title='CHristler' value='CHRY'>CHristler</option>
+	<option title='FORD' value='FORD'>FORD</option>
+	<option title='HOND' value='HOND'>HOND</option>
+	<option title='Hyundai' value='HYUN'>Hyundai</option>
+	<option title='Infiniti' value='INFI'>Infiniti</option>
+	<option title='Option 13' value='ISU'>Option 13</option>
+	<option title='Jaguar' value='JAGU'>Jaguar</option>
+	<option title='Jeep' value='JEEP'>Jeep</option>
+	<option title='Kia' value='KIA'>Kia</option>
+	<option title='Landrover' value='LAND'>Landrover</option>
+	<option title='Lexus' value='LEXS'>Lexus</option>
+	<option title='Lincoln' value='LINC'>Lincoln</option>
+	<option title='Mazda' value='MAZD'>Mazda</option>
+	<option title='Mercury' value='MERC'>Mercury</option>
+	<option title='Mitsubishi' value='MITS'>Mitsubishi</option>
+	<option title='Nissan' value='NISS'>Nissan</option>
+	<option title='Oldsmobile' value='OLDS'>Oldsmobile</option>
+	<option title='Plymoth' value='PLYM'>Plymoth</option>
+	<option title='Pontiac' value='PONT'>Pontiac</option>
+	<option title='SATR' value='SATR'>Saturn</option>
+	<option title='SUbaru' value='SUBA'>SUbaru</option>
+	<option title='Suzuki' value='SUZI'>Suzuki</option>
+	<option title='Toyota' value='TOYT'>Toyota</option>
+	<option title='Volkswagon' value='VOLK'>Volkswagon</option>
+	<option title='Option 33' value='Option 33'>Option 33</option>
+      </select></span><br>
+      <span>Liscense Plate: <input id="lis" type="text"> </span><br>
+      <span>Color: <select id="col" name='color' >
+        <option value=" "></option>
+	      <option title='BLUE' value='BLU'>BLUE</option>
+	      <option title='RED' value='RED'>RED</option>
+	      <option title='White' value='WHI'>White</option>
+	      <option title='Silver' value=' SIL'>Silver</option>
+	      <option title='Black' value='BLK'>Black</option>
+	      <option title='Dark Blue' value='DBL'>Dark Blue</option>
+	      <option title='GREY' value='GRY'>GREY</option>
+      	<option title='TAN' value='TAN'>TAN</option>
+      	<option title='Beige' value='BGE'>Beige</option>
+      	<option title='Maroon' value='MAR'>Maroon</option>
+        </select></span><br>
+    <span>State: <select id="stat" name='state' >
+	<option title='Alabama' value='AL'>Alabama</option>
+	<option title='Arkansas' value='AR'>Arkansas</option>
+	<option title='Arizona' value='AZ'>Arizona</option>
+	<option title='California' value='CA'>California</option>
+	<option title='Colorado' value='CO'>Colorado</option>
+	<option title='Florida' value='FL'>Florida</option>
+	<option title='Georgia' value='GA'>Georgia</option>
+	<option title='Iowa' value='IA'>Iowa</option>
+	<option title='Illinois' value='IL'>Illinois</option>
+	<option title='West Virginia' value='WV'>West Virginia</option>
+	<option title='Wisconsin' value='WI'>Wisconsin</option>
+	<option title='Washington' value='WA'>Washington</option>
+	<option title='Vermont' value='VT'>Vermont</option>
+	<option title='Virginia' value='VA'>Virginia</option>
+	<option title='Utah' value='UT'>Utah</option>
+	<option title='Texas' value='TX'>Texas</option>
+	<option title='Tenesse' value='TN'>Tenesse</option>
+	<option title='South Carolina' value='SC'>South Carolina</option>
+	<option title='Oregon' value='OR'>Oregon</option>
+	<option title='Oklahoma' value='OK'>Oklahoma</option>
+	<option title='Ohio' value='OH'>Ohio</option>
+	<option title='New York' value='NY'>New York</option>
+	<option title='Nevada' value='NV'>Nevada</option>
+	<option title='New Jersey' value='NJ'>New Jersey</option>
+	<option title='North Dakota' value='ND'>North Dakota</option>
+	<option title='North Carolina' value='NC'>North Carolina</option>
+	<option title='Nebraska' value='NB'>Nebraska</option>
+	<option title='Montana' value='MT'>Montana</option>
+	<option title='MS' value='MS'>MS</option>
+	<option title='Montana' value='MO'>Montana</option>
+	<option title='Minisotta' value='MN'>Minisotta</option>
+	<option title='Michigan' value='MI'>Michigan</option>
+	<option title='MD' value='MD'>MD</option>
+	<option title='MA' value='MA'>MA</option>
+	<option title='Louisiana' value='LA'>Louisiana</option>
+	<option title='Kentucky' value='KY'>Kentucky</option>
+	<option title='Kansas' value='KS'>Kansas</option>
+	<option title='Indiana' value='IN'>Indiana</option>
+      </select></span>
 
+      <span></span>
+      
+      
+    </form><center><button onclick="myFunction()">Submit Form</button></center></div>
+    
+    
+    
+    <div id="data">
+    </div>
+    <script>
+    function myFunction() {
+        $('#data').empty();
+        var URL="https://data.cityofchicago.org/resource/rp42-fxjt.json";
+       
+        
+          var make= $("#make").val();
+          var lisc=$("#lis").val();
+          var col=$("#col").val();
+          var state=$("#stat").val();
+        if(make!=" " &&lisc!=" "&&col!=" "&&state!=" "){
+          URL=URL+"?"+"make="+make+"&Color="+col+"&Plate="+lisc+"&State="+state;
+        }
+           
+        $.ajax({
+          url: URL,
+          type: "GET",
+          data: {
+            "$limit" : 5000,
+            "$$app_token" : "MxqIDjBuoUPVqXhBEe90laTMd"
+          }
+          }).done(function(data) {
+           // alert("Retrieved " + data.length + " records from the dataset!");
+            console.log(data);
+            var addthis="<table>"
+            $.each(data,function(i,v){
+                addthis=addthis+"<tr><td>";
+                addthis=addthis+v.tow_date+"</td><td>"+v.towed_to_address+"</td>"+"<td>"+v.tow_facility_phone+"</td><td>"+v.plate+"</td>";
+                addthis=addthis+"<td>"+v.color+"</td>"+"<td>"+v.state+"</td>"+"<td>"+v.make+"</td>";       
+                addthis=addthis+"</tr>";
+            });
+            addthis=addthis+"</table>";
+           $('#data').append(addthis);
+          });
+}
 
-<script></script>
+    
+    
+    </script>
 </body>
 </html>
